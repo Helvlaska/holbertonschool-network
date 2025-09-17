@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Affiche toutes les adresses IPv4 actives de la machine
+
+ifconfig | grep 'inet ' | cut -d' ' -f10
