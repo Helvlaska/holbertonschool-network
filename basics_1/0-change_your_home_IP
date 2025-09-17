@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
-# Script pour modifier les adresses du localhost et de facebook.com
-echo 127.0.0.2     localhost >> /etc/hosts
-echo 8.8.8.8     facebook.com >> /etc/hosts
+# Configure /etc/hosts pour que localhost pointe vers 127.0.0.2 et facebook.com vers 8.8.8.8
+
+# Supprime uniquement la ligne exacte "127.0.0.1 localhost"
+sed -i '/^127\.0\.0\.1\s\+localhost$/d' /etc/hosts
+
+# Supprime toute ligne existante de facebook.com
+sed -i '/facebook.com/d' /etc/hosts
+
+# Ajoute les nouvelles correspondances
+echo "127.0.0.2   localhost" >> /etc/hosts
+echo "8.8.8.8     facebook.com" >> /etc/hosts
